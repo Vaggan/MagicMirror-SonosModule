@@ -1,12 +1,9 @@
-var 
-sonosModule = {
-	// Default language is Dutch because that is what the original author used
-	apiBase: 'http://localhost:5005/',
+var sonosModule = {
 	intervalId: null,
+	apiBase: sonosModuleConfig.interval || 'http://localhost:5005/',
 	updateInterval: sonosModuleConfig.interval || 60000,
-	showStoppedRoom: sonosModuleConfig.showStoppedRoom == null ? true :  sonosModuleConfig.showStoppedRoom,
+	showPausedZone: sonosModuleConfig.showPausedZone == null ? true :  sonosModuleConfig.showPausedZone,
 }
-
 
 sonosModule.GetZones = function(){
 	$.ajax({
@@ -15,7 +12,6 @@ sonosModule.GetZones = function(){
 		dataType: 'json',
 		data: '',
 		success: function (data) {
-			//console.log(data);
 			var text = '<ul>';
 
 			$.each(data, function (i, item) {
@@ -35,7 +31,7 @@ sonosModule.GetZones = function(){
 				if(state === 'PLAYING')
 		  			text += '<li>' + room  + ': ' + artist + ' - ' + track + '</li>';
 				else{
-					if(sonosModule.showStoppedRoom)
+					if(sonosModule.showPausedZone)
 						text += '<li>' + room  + ': </li>';
 					else
 						return true;
@@ -46,16 +42,14 @@ sonosModule.GetZones = function(){
 			$('.sonosModule').updateWithText(text, 4000);
 
 		}.bind(this),
-		error: function () {
-			console.log('Nej');
+		error: function (xhr, status, error) {
+			console.log('Error: sonos-module: Could not get zones: ' + xhr.status + ': ' + xhr.responseText);
 		}
 	});
 }
 
-//sonosModule.init = function () {
 sonosModule.GetZones();
 
 sonosModule.intervalId = setInterval(function () {
 	sonosModule.GetZones();
 }.bind(this), sonosModule.updateInterval);
-//}
