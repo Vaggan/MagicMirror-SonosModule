@@ -4,6 +4,8 @@
 
 This is a sonos-module for the [MagicMirror](https://github.com/MichMich/MagicMirror) created by [MichMich´s](https://github.com/MichMich).
 
+>The module system is about to be updated. This can cause problems with this module. 
+
 ## Configuration
 
 Modify ```config.js``` to change the behavior of the module.
@@ -18,3 +20,8 @@ Modify ```config.js``` to change the behavior of the module.
 ##### [node-sonos-http-api](https://github.com/jishi/node-sonos-http-api) by [jishi](https://github.com/jishi)
 This API is required to run to be able to communicate with the sonos system.
 Wihtout it we can not get the zones and we can not send any commands.
+
+## Help
+
+There is a discussion [here](https://github.com/MichMich/MagicMirror/issues/94) that might help you get up and running.
+If you have further problems, don´t hesitat to ask.
