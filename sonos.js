@@ -5,10 +5,9 @@ Module.create({
 		showRoomName: true,
 		fadeSpeed: 1000,
 		updateInterval: 0.5 * 60 * 1000, // every 0.5 minutes
-		api: {
-			base: '//localhost:5005/',
-			zonesEndpoint: 'zones'
-		}
+		apiBase: '//localhost',
+		apiPort: 5005,
+		apiEndpoint: 'zones'
 	},
 	start: function() {
 		Log.info('Starting module: ' + this.name);
@@ -28,7 +27,7 @@ Module.create({
 	},
 	load: function(){
 		return Q($.ajax({
-			url: this.config.api.base + this.config.api.zonesEndpoint
+			url: this.config.apiBase + ":" + this.config.apiPort + "/" + this.config.apiEndpoint
 		}));
 	},
 	render: function(data){
