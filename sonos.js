@@ -1,4 +1,4 @@
-Module.create({
+Module.register('sonos',{
 	defaults: {
 		showStoppedRoom: true,
 		showAlbumArt: true,
