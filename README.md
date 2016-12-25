@@ -4,11 +4,13 @@
 
 This is a sonos-module for the [MagicMirror](https://github.com/MichMich/MagicMirror) created by [MichMich´s](https://github.com/MichMich).
 
->The module system is about to be updated. This can cause problems with this module. 
+>I have taken the version [CFenner] (https://github.com/CFenner/MagicMirror-Sonos-Module) worked on and replaced my old one.
+
+> ## The rest of this readme is not relevant.
 
 ## Configuration
 
-Modify ```config.js``` to change the behavior of the module.
+"Modify ```config.js``` to change the behavior of the module."
 
 * __apiBase__			- Set to ulr to your [node-sonos-http-api](https://github.com/jishi/node-sonos-http-api)
 * __interval__			- Set the time between each update (10000 = 10 sec). 
